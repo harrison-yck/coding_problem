@@ -1,0 +1,34 @@
+subprojects {
+    group = "app.coding_problem"
+    version = '1.0.0'
+
+    apply plugin: "java"
+
+    sourceCompatibility = JavaVersion.VERSION_15
+    targetCompatibility = JavaVersion.VERSION_15
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    if (!childProjects.isEmpty()) return
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+}
+
+configure(subprojects) {
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+        testCompile("org.assertj:assertj-core:3.11.1")
+    }
+
+    test {
+        useJUnit()
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+    idea.module.inheritOutputDirs = true
+}
