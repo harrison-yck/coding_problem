@@ -24,7 +24,7 @@ configure(subprojects) {
     }
 
     test {
-        useJUnit()
+        useJUnitPlatform()
     }
 }
 
