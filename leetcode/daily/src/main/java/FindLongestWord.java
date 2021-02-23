@@ -1,13 +1,10 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
  * @author harrison
  */
 public class FindLongestWord {
-    public static String solution(String s, List<String> d) {
+    public static String solve(String s, List<String> d) {
         String res = "";
         for (String str: d) {
             if ((str.length() > res.length() || str.length() == res.length() && str.compareTo(res) < 0) && canForm(s, str)) res = str;
