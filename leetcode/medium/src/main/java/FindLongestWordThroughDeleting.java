@@ -3,7 +3,12 @@ import java.util.List;
 /**
  * @author harrison
  */
-public class FindLongestWord {
+
+/*
+    524. Longest Word in Dictionary through Deleting
+*/
+
+public class FindLongestWordThroughDeleting {
     public static String solve(String s, List<String> d) {
         String res = "";
         for (String str: d) {
