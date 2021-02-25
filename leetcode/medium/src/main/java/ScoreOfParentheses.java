@@ -20,7 +20,7 @@ public class ScoreOfParentheses {
 
             if (S.charAt(i) == ')' && S.charAt(i-1) == '(') {
                 // Diff = 0 : (), ()()  <- +1
-                // Diff > 0 : (()), (())(())  < *2 for every diff  ((() implies ((()))
+                // Diff > 0 : (()), (())(())  <- *2 for every diff , also ((() implies ((()))
                 score += Math.pow(2, leftRightDiff);
             }
         }
