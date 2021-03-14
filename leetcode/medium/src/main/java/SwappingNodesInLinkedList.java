@@ -51,19 +51,21 @@ public class SwappingNodesInLinkedList {
     }
 
     public static ListNode swapNodeValues(ListNode head, int k) {
-        ListNode fast = head, slow = head;
+        ListNode moving = head;
 
-        for (int i = 1; i < k; i++) fast = fast.next;
-        ListNode right = fast;
+        for (int i = 1; i < k; i++) moving = moving.next;
 
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
+        ListNode right = head;
+        ListNode left = moving;
+
+        while (moving.next != null) {
+            moving = moving.next;
+            right = right.next;
         }
 
-        int tmp = right.val;
-        right.val = slow.val;
-        slow.val = tmp;
+        int tmp = left.val;
+        left.val = right.val;
+        right.val = tmp;
 
         return head;
     }
