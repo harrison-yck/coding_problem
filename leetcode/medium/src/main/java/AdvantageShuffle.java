@@ -36,4 +36,25 @@ public class AdvantageShuffle {
 
         return result;
     }
+
+    public static int[] advantageCount(int[] A, int[] B) {
+        int aLength = A.length;
+        Arrays.sort(A);
+
+        Integer[] bSortedIndex = new Integer[aLength];
+        for (int i = 0; i < aLength; i++) bSortedIndex[i] = i;
+        Arrays.sort(bSortedIndex, (a, b) -> B[b] - B[a]); // sort desc
+
+        int smaller = 0, larger = aLength - 1;
+        int[] result = new int[aLength];
+
+        for (Integer index: bSortedIndex) {
+            if (A[larger] > B[index]) {
+                result[index] = A[larger--];
+            } else {
+                result[index] = A[smaller++];
+            }
+        }
+        return result;
+    }
 }
