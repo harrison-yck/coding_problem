@@ -1,10 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-/**
- * @author harrison
- */
+import static org.junit.jupiter.api.Assertions.*;
 
 class LengthOfLongestSubstringTest {
 
