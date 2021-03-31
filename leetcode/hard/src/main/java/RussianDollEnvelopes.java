@@ -44,15 +44,13 @@ public class RussianDollEnvelopes {
 
         // patient sort
         // ref: https://www.youtube.com/watch?v=22s1xxRvy28&ab_channel=StableSort
-        int[] dp = new int[envelopes.length];
+        int[] piles = new int[envelopes.length];
         int len = 0;
         for (int[] envelope : envelopes) {
-            int i = Arrays.binarySearch(dp, 0, len, envelope[1]); // check increasing
+            int i = Arrays.binarySearch(piles, 0, len, envelope[1]); // check envelope[1] should insert to which pile
 
             if (i < 0) i = -(i + 1);
-            dp[i] = envelope[1]; // increasing: update last card, otherwise: create another pile
-
-            if (i == len) len++;
+            piles[i] = envelope[1]; // increasing: update top card in pile, otherwise: create another pile
         }
         return len;
     }
