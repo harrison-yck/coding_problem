@@ -5,7 +5,6 @@ import java.util.List;
  * @author harrison
  */
 public class StampingTheSequence {
-    //
     public int[] movesToStamp(String stamp, String target) {
         int targetLength = target.length();
         int stampLength = stamp.length();
@@ -13,7 +12,7 @@ public class StampingTheSequence {
         char[] targetArr = target.toCharArray();
 
         int replaced = 0;
-        boolean[] visited = new boolean[targetLength];
+        boolean[] updated = new boolean[targetLength];
         List<Integer> result = new ArrayList<>();
 
         outer:
@@ -22,10 +21,10 @@ public class StampingTheSequence {
             // valid solution should update something for every traversal
             for (int i = 0; i <= targetLength - stampLength; i++) {
                 // use visited to avoid checking already replaced range
-                if (!visited[i] && canReplace(targetArr, stampArr, i)) {
+                if (!updated[i] && canReplace(targetArr, stampArr, i)) {
                     result.add(i);
                     replaced += replace(targetArr, stampArr, i);
-                    visited[i] = true;
+                    updated[i] = true;
                     updateAny = true;
 
                     if (replaced == targetLength) break outer; // find valid solution
@@ -35,7 +34,7 @@ public class StampingTheSequence {
             if (!updateAny) return new int[0]; // no solution
         }
 
-        // I used ArrayDeque originally. But use list and then change to array is faster (7ms -> 3ms)
+        // I used ArrayDeque and stream to int[] originally. But use list and then change to array is faster (7ms -> 3ms)
         int[] res = new int[result.size()];
         for (int i = 0; i < result.size(); i++) {
             res[i] = result.get(result.size() - i - 1);
