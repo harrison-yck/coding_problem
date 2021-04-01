@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * @author harrison
  */
-public class WordSubSet {
+public class WordSubset {
     public static List<String> wordSubsets(String[] A, String[] B) {
         int[] countB = new int[26];
         for (String s : B) {
