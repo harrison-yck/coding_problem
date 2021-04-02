@@ -11,6 +11,7 @@ class FindCommonCharactersTest {
 
     @Test
     void commonChars() {
-        assertThat(FindCommonCharacters.commonChars(new String[]{"bella","label","roller"})).isEqualTo(Lists.list("e","l","l"));
+        var findCommonCharacters = new FindCommonCharacters();
+        assertThat(findCommonCharacters.commonChars(new String[]{"bella","label","roller"})).isEqualTo(Lists.list("e","l","l"));
     }
 }

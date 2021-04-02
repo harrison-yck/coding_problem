@@ -6,10 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class BinaryStringTest {
     @Test
     void test() {
-       assertThat(BinaryString.checkOnesSegment("1001")).isFalse();
-       assertThat(BinaryString.checkOnesSegment("110")).isTrue();
-       assertThat(BinaryString.checkOnesSegment("1")).isTrue();
-       assertThat(BinaryString.checkOnesSegment("11")).isTrue();
-       assertThat(BinaryString.checkOnesSegment("1000")).isTrue();
+        var binaryString = new BinaryString();
+       assertThat(binaryString.checkOnesSegment("1001")).isFalse();
+       assertThat(binaryString.checkOnesSegment("110")).isTrue();
+       assertThat(binaryString.checkOnesSegment("1")).isTrue();
+       assertThat(binaryString.checkOnesSegment("11")).isTrue();
+       assertThat(binaryString.checkOnesSegment("1000")).isTrue();
     }
 }

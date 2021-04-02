@@ -2,7 +2,7 @@
  * @author harrison
  */
 public class RomanToInt {
-    public static int solve(String s) {
+    public int solve(String s) {
         char[] chars = s.toCharArray();
         int sum = 0;
         int lastValue = 0;
@@ -20,7 +20,7 @@ public class RomanToInt {
         return sum;
     }
 
-    private static int charToInt(char c) {
+    private int charToInt(char c) {
         switch (c) {
             case 'I': return 1;
             case 'V': return 5;

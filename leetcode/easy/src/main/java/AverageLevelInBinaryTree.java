@@ -12,7 +12,7 @@ import java.util.Map;
  * @author harrison
  */
 public class AverageLevelInBinaryTree {
-    public static List<Double> bfs(TreeNode root) {
+    public List<Double> bfs(TreeNode root) {
         List<Double> result = new ArrayList<>();
         Deque<TreeNode> nodes = new LinkedList<>();
 
@@ -36,7 +36,7 @@ public class AverageLevelInBinaryTree {
         return result;
     }
 
-    public static List<Double> dfs(TreeNode root) {
+    public List<Double> dfs(TreeNode root) {
         List<Double> result = new ArrayList<>();
 
         Map<Integer, Double> sum = new HashMap<>();
@@ -50,7 +50,7 @@ public class AverageLevelInBinaryTree {
         return result;
     }
 
-    private static void traverse(TreeNode node, int level, Map<Integer, Double> sum, Map<Integer, Integer> nodesInLevel) {
+    private void traverse(TreeNode node, int level, Map<Integer, Double> sum, Map<Integer, Integer> nodesInLevel) {
         if (node == null) return;
 
         sum.put(level, sum.getOrDefault(level, 0.0) + node.val);

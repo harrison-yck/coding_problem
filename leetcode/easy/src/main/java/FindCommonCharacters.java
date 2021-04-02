@@ -6,7 +6,7 @@ import java.util.List;
  * @author harrison
  */
 public class FindCommonCharacters {
-    public static List<String> commonChars(String[] A) {
+    public List<String> commonChars(String[] A) {
         int[] globalCount = new int[26];
         Arrays.fill(globalCount, Integer.MAX_VALUE);
 

@@ -6,10 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class RomanToIntTest {
     @Test
     void solve() {
-        assertThat(RomanToInt.solve("III")).isEqualTo(3);
-        assertThat(RomanToInt.solve("IV")).isEqualTo(4);
-        assertThat(RomanToInt.solve("IX")).isEqualTo(9);
-        assertThat(RomanToInt.solve("LVIII")).isEqualTo(58);
-        assertThat(RomanToInt.solve("MCMXCIV")).isEqualTo(1994);
+        RomanToInt romanToInt = new RomanToInt();
+        assertThat(romanToInt.solve("III")).isEqualTo(3);
+        assertThat(romanToInt.solve("IV")).isEqualTo(4);
+        assertThat(romanToInt.solve("IX")).isEqualTo(9);
+        assertThat(romanToInt.solve("LVIII")).isEqualTo(58);
+        assertThat(romanToInt.solve("MCMXCIV")).isEqualTo(1994);
     }
 }

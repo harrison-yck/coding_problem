@@ -7,10 +7,13 @@ import java.util.List;
  * @author harrison
  */
 public class FlipBinaryTreeToPreorder {
-    List<Integer> result = new ArrayList<>();
-    int index = 0;
+    private List<Integer> result;
+    private int index;
 
     public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
+        this.result = new ArrayList<>();
+        this.index = 0;
+
         return dfs(root, voyage) ? result : List.of(-1);
     }
 

@@ -51,6 +51,8 @@ public class RussianDollEnvelopes {
 
             if (i < 0) i = -(i + 1);
             piles[i] = envelope[1]; // increasing: update top card in pile, otherwise: create another pile
+
+            if (i == len) len++;
         }
         return len;
     }

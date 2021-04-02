@@ -6,7 +6,7 @@
 * 5697. Check if Binary String Has at Most One Segment of Ones
 * */
 public class BinaryString {
-    public static boolean checkOnesSegment(String s) {
+    public boolean checkOnesSegment(String s) {
         char prev = '1';
         boolean disCon = false;
 
