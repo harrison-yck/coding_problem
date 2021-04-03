@@ -13,5 +13,6 @@ class LongestValidParenthesesTest {
         assertThat(longestValidParentheses.longestValidParentheses("")).isEqualTo(0);
         assertThat(longestValidParentheses.longestValidParentheses("()(())")).isEqualTo(6);
         assertThat(longestValidParentheses.longestValidParentheses("()(()")).isEqualTo(2);
+        assertThat(longestValidParentheses.longestValidParentheses(")())()()")).isEqualTo(4);
     }
 }
