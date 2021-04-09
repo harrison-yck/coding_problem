@@ -28,4 +28,36 @@ public class ListNode {
         }
         return head;
     }
+
+    public static void print(ListNode node) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+        sb.append(node.val).append(" ");
+
+        while(node.next != null) {
+            node = node.next;
+            sb.append(node.val).append(" ");
+        }
+
+        sb.append("]");
+
+        System.out.println(sb);
+    }
+
+    public static void print(ListNode node, int n) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+        sb.append(node.val).append(" ");
+
+        int count = 1;
+        while(count < n) {
+            node = node.next;
+            sb.append(node.val).append(" ");
+            count++;
+        }
+
+        sb.append("]");
+
+        System.out.println(sb);
+    }
 }
