@@ -1,5 +1,7 @@
 package datastructure;
 
+import java.util.Objects;
+
 /**
  * @author harrison
  */
@@ -32,5 +34,18 @@ public class TreeNode {
         node.left = create(values, index * 2 + 1);
         node.right = create(values, index * 2 + 2);
         return node;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TreeNode treeNode = (TreeNode) o;
+        return val == treeNode.val && Objects.equals(left, treeNode.left) && Objects.equals(right, treeNode.right);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val, left, right);
     }
 }
