@@ -8,9 +8,10 @@ import java.util.stream.Collectors;
  * @author harrison
  */
 public class Permutations {
-    List<List<Integer>> results = new ArrayList<>();
+    List<List<Integer>> results;
 
     public List<List<Integer>> permute(int[] nums) {
+        results = new ArrayList<>();
         backtrack(new ArrayList<>(), nums);
         return results;
     }
