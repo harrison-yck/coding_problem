@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +23,14 @@ public class SubarraySumEqualsK {
         int count = 0;
         int sum = 0;
 
-        Map<Integer, Integer> prefixSum = new HashMap<>(); // key: prefix, value = occurrence
+        Map<Integer, Integer> prefixSums = new HashMap<>(); // key: prefixSum, value = occurrence
+        prefixSums.put(0, 1); // handle prefixSum == k
         for (int num : nums) {
             sum += num;
-            if (prefixSum.containsKey(sum - k)) count += prefixSum.get(sum - k);
-            prefixSum.put(sum, prefixSum.getOrDefault(sum, 0) + 1);
+            if (prefixSums.containsKey(sum - k)) count += prefixSums.get(sum - k); // has prefixSum - k means we can form sum = k
+            prefixSums.put(sum, prefixSums.getOrDefault(sum, 0) + 1);
         }
+
         return count;
     }
 }
