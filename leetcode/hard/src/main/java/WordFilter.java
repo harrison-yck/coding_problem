@@ -42,13 +42,13 @@ public class WordFilter {
         int leftIndex = left.size() - 1;
         int rightIndex = right.size() - 1;
 
-        while(leftIndex >= 0 && rightIndex >= 0) {
+        while (leftIndex >= 0 && rightIndex >= 0) {
             int a = left.get(leftIndex);
             int b = right.get(rightIndex);
 
-            if(a > b) {
+            if (a > b) {
                 leftIndex--;
-            } else if(a < b) {
+            } else if (a < b) {
                 rightIndex--;
             } else {
                 return a;
@@ -74,11 +74,12 @@ public class WordFilter {
         private void add(String word, int index, boolean reversed) {
             TrieNode node = reversed ? reversedRoot : root;
 
-            for(int i = 0; i < word.length(); i++) {
-                char c = reversed ? word.charAt(word.length() - i - 1) : word.charAt(i);
-                if(node.children[c - 'a'] == null) {
-                    node.children[c - 'a'] = new TrieNode();
-                }
+            int length = word.length();
+            for (int i = 0; i < length; i++) {
+                char c = reversed ? word.charAt(length - 1 - i) : word.charAt(i);
+
+                if (node.children[c - 'a'] == null) node.children[c - 'a'] = new TrieNode();
+
                 node = node.children[c - 'a'];
                 node.indices.add(index);
             }
@@ -95,11 +96,12 @@ public class WordFilter {
         private List<Integer> search(String word, boolean reversed) {
             TrieNode cur = reversed ? reversedRoot : root;
 
-            for(int i = 0; i < word.length(); i++) {
-                char c = reversed ? word.charAt(word.length() - i - 1) : word.charAt(i);
-                if(cur.children[c - 'a'] == null) {
-                    return new ArrayList<>();
-                }
+            int length = word.length();
+            for (int i = 0; i < length; i++) {
+                char c = reversed ? word.charAt(length - 1 - i) : word.charAt(i);
+
+                if (cur.children[c - 'a'] == null) return new ArrayList<>();
+
                 cur = cur.children[c - 'a'];
             }
             return cur.indices;
