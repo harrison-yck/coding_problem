@@ -58,17 +58,22 @@ public class CourseScheduleIII {
 
     public int scheduleCourse(int[][] courses) {
         Arrays.sort(courses, Comparator.comparingInt(a -> a[1]));
-        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
+
+        // use pq to find largest duration scheduled
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
         int time = 0;
         for (int[] course : courses) {
-            if (time + course[0] <= course[1]) {
-                queue.offer(course[0]);
-                time += course[0];
-            } else if (!queue.isEmpty() && queue.peek() > course[0]) {
-                time += course[0] - queue.poll();
-                queue.offer(course[0]);
+            int cost = course[0];
+            int deadline = course[1];
+
+            if (time + cost <= deadline) {
+                pq.offer(cost);
+                time += cost;
+            } else if (!pq.isEmpty() && pq.peek() > cost) {
+                time += cost - pq.poll();
+                pq.offer(cost);
             }
         }
-        return queue.size();
+        return pq.size();
     }
 }
