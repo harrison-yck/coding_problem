@@ -7,10 +7,9 @@ public class ValidNumber {
             int length = s.length();
             if (length == 0) return false;
 
+            // last char must be an integer
             char lastChar = s.charAt(length - 1);
-            int lastCharToInt = lastChar - '0';
-            if (lastChar != '.' && (lastCharToInt < 0 || lastCharToInt > 9))
-                return false; // last char must be an integer
+            if (lastChar != '.' && !Character.isDigit(lastChar)) return false;
 
             Double.parseDouble(s);
             return true;
