@@ -14,9 +14,11 @@ public class InterleavingString {
         if (invalid[i][j]) return false;
         if (k == s3.length()) return true;
 
-        boolean path1 = i < s1.length() && s1.charAt(i) == s3.charAt(k) && dfs(s1, s2, s3, i + 1, j, k + 1);
-        boolean path2 = j < s2.length() && s2.charAt(j) == s3.charAt(k) && dfs(s1, s2, s3, i, j + 1, k + 1);
-        boolean reached = path1 || path2;
+//        boolean path1 = i < s1.length() && s1.charAt(i) == s3.charAt(k) && dfs(s1, s2, s3, i + 1, j, k + 1);
+//        boolean path2 = j < s2.length() && s2.charAt(j) == s3.charAt(k) && dfs(s1, s2, s3, i, j + 1, k + 1);
+
+        // put it in one statement so that when path1 cannot be reached, we don't have to try path2
+        boolean reached = i < s1.length() && s1.charAt(i) == s3.charAt(k) && dfs(s1, s2, s3, i + 1, j, k + 1) || j < s2.length() && s2.charAt(j) == s3.charAt(k) && dfs(s1, s2, s3, i, j + 1, k + 1);
         if (!reached) invalid[i][j] = true;
 
         return reached;
