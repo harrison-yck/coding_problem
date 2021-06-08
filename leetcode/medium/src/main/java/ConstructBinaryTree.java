@@ -8,26 +8,28 @@ import java.util.Map;
  * @author harrison
  */
 public class ConstructBinaryTree {
-    private int preorderIndex;
+    private int inorderIndex = 0;
+    private int preorderIndex = 0;
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        Map<Integer, Integer> inorderIndices = new HashMap<>();
-        for(int i = 0; i < inorder.length; i++) inorderIndices.put(inorder[i], i);
-
-        return build(inorderIndices, preorder, 0, preorder.length - 1);
+        return build(preorder, inorder, Integer.MIN_VALUE);
     }
 
     // Divide and Conquer
-    private TreeNode build(Map<Integer, Integer> inorderIndices, int[] preorder, int left, int right) {
+    private TreeNode build(int[] preorder, int[] inorder, int stop) {
         // base case
-        if (left > right) return null;
+        if (preorderIndex >= preorder.length) return null;
+        if (inorder[inorderIndex] == stop) {
+            inorderIndex++;
+            return null;
+        }
 
         int rootVal = preorder[preorderIndex++]; // traversal as bfs
         TreeNode root = new TreeNode(rootVal);
 
         // root index as pivot (in inorder list) to divide left and right as sub-problems
-        root.left = build(inorderIndices, preorder, left, inorderIndices.get(rootVal) - 1);
-        root.right = build(inorderIndices, preorder, inorderIndices.get(rootVal) + 1, right);
+        root.left = build(preorder, inorder, rootVal);
+        root.right = build(preorder, inorder, stop);
         return root;
     }
 }
