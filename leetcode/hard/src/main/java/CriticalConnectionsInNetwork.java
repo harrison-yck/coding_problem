@@ -20,6 +20,7 @@ public class CriticalConnectionsInNetwork {
 
     // connection is not necessarily sorted, so build a sorted one
     private List<Integer>[] buildGraph(int n, List<List<Integer>> connections) {
+        @SuppressWarnings("unchecked")
         List<Integer>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
