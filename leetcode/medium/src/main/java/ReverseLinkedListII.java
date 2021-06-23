@@ -6,7 +6,7 @@ import datastructure.ListNode;
 public class ReverseLinkedListII {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         // base
-        if (left == 0) return reverse(head, right);
+        if (left <= 1) return reverse(head, right - left + 1);
         // recursive
         head.next = reverseBetween(head.next, left - 1, right - 1);
 
@@ -14,8 +14,9 @@ public class ReverseLinkedListII {
     }
 
     ListNode successor = null;
+
     private ListNode reverse(ListNode head, int index) {
-        if (index == 0) {
+        if (index == 1) {
             successor = head.next;
             return head;
         }
