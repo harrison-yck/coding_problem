@@ -19,6 +19,6 @@ public class RemoveAllAdjacentDuplicates {
                 stack[i++] = c;
             }
         }
-        return new String(stack).trim();
+        return String.valueOf(stack, 0, i);
     }
 }
