@@ -14,7 +14,7 @@ public class CustomSortString {
             occurrence[c - 'a']++;
         }
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(str.length());
         for (char c : order.toCharArray()) {
             while (occurrence[c - 'a'] != 0) {
                 sb.append(c);
