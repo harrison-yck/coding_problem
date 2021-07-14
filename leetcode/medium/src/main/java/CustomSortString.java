@@ -14,22 +14,21 @@ public class CustomSortString {
             occurrence[c - 'a']++;
         }
 
-        int newStringIndex = 0;
-        char[] s = new char[str.length()];
+        StringBuilder sb = new StringBuilder();
         for (char c : order.toCharArray()) {
             while (occurrence[c - 'a'] != 0) {
-                s[newStringIndex++] = c;
+                sb.append(c);
                 occurrence[c - 'a']--;
             }
         }
 
         for (int i = 0; i < occurrence.length; i++) {
             while (occurrence[i] != 0) {
-                s[newStringIndex++] = (char) (i + 'a');
+                sb.append((char) (i + 'a'));
                 occurrence[i]--;
             }
         }
 
-        return String.valueOf(s);
+        return sb.toString();
     }
 }
